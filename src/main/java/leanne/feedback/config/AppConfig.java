@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan(basePackages = "leanne.feedback.*")
-@Import(WebMvcConfig.class)
+@Import({WebMvcConfig.class, PropertiesConfig.class, SecurityConfig.class})
 public class AppConfig {
 }
