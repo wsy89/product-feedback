@@ -28,6 +28,16 @@
                 <label for="product" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Product:</label>
                 <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{product}" />
             </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="product" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Please select Product...
+                </button>
+                <div class="dropdown-menu" aria-labelledby="product">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="feedback" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Feedback:</label>
                 <textarea class="form-control col-xs-4 col-sm-3 col-md-2" type="textarea" th:field="*{feedback}" />
@@ -35,7 +45,7 @@
 
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn submit btn-default">Submit</button>
+                    <button type="submit" class="btn submit btn-outline-primary">Submit</button>
                 </div>
             </div>
         </form>

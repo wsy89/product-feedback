@@ -5,24 +5,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{resources/css/styles.css}" />
 </head>
-<body onload='document.loginForm.j_username.focus();'>
+<body>
+    <div class="dim">
+        <div class='p-y-2 login container rounded'>
+            <h3 class='title flex-center'>Admin Login Portal</h3>
 
-<div class="container main-container">
-    <div class='header'>
-        <img src='../../resources/images/tinylogo21.png' class='app-logo'/>
-        <h2 class='title'>Liverton Help Form</h2>
-    </div>
-    <div class='p-y-2'>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<form name="loginForm" th:action="@{/login}" method="post">
+            <div class="loginContainer">
 
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+                <form name="loginForm" th:action="@{/login}" class="login" method="post">
+
+                    <div class="form-group flex-center"> <label> User Name : <input type="text" name="username"/> </label></div>
+                    <div class="form-group flex-center"><label> Password: <input type="password" name="password"/> </label></div>
+
+
+
+                    <div class="alert alert-danger flex-center" th:if="${param.error}" role="alert">
+                        Invalid username and password.
+                    </div>
+
+                    <div class="flex-center"><input type="submit" value="Sign In" class="btn submit btn-outline-primary"/></div>
+
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>
