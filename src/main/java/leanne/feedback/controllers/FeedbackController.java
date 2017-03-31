@@ -29,7 +29,7 @@ public class FeedbackController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String submitFeedback(@ModelAttribute(value="feedback") Feedback feedback) {
-        feedbackService.submitFeedback(feedback);
+//        feedbackService.submitFeedback(feedback);
 
         return "result";
     }
