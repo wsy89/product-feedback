@@ -7,23 +7,23 @@
 </head>
 <body>
     <div class="dim">
-        <div class='p-y-2 login container rounded'>
+        <div class='p-y-2 outer container rounded'>
             <h3 class='title flex-center'>Admin Login Portal</h3>
 
-            <div class="loginContainer">
+            <div class="inner container">
 
-                <form name="loginForm" th:action="@{/login}" class="login" method="post">
+                <form name="loginForm" th:action="@{/login}" method="post">
 
-                    <div class="form-group flex-center"> <label> User Name : <input type="text" name="username"/> </label></div>
-                    <div class="form-group flex-center"><label> Password: <input type="password" name="password"/> </label></div>
+                            <div class="form-group flex-center"> <label> User Name : <input type="text" name="username"/> </label></div>
+                            <div class="form-group flex-center"><label> Password: <input type="password" name="password"/> </label></div>
 
 
 
-                    <div class="alert alert-danger flex-center" th:if="${param.error}" role="alert">
-                        Invalid username and password.
-                    </div>
+                            <div class="alert alert-danger flex-center" th:if="${param.error}" role="alert">
+                                Invalid username and password.
+                            </div>
 
-                    <div class="flex-center"><input type="submit" value="Sign In" class="btn submit btn-outline-primary"/></div>
+                            <div class="flex-center"><input type="submit" value="Sign In" class="btn submit btn-outline-primary"/></div>
 
                 </form>
             </div>

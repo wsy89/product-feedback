@@ -63,8 +63,9 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-div.loginContainer{
+div.inner.container{
     margin: 40px 0 40px 0;
+    width: 100%;
 }
 
 img {
@@ -72,7 +73,7 @@ img {
     height: auto;
 }
 
-div.login.container{
+div.outer.container{
     width:50%;
     overflow: hidden;
     margin-top: 10px;
@@ -142,7 +143,7 @@ div.login.container{
 button.submit{
     color: #00b0f0;
 }
-s
+
 .btn-outline-primary {
      color: #00b0f0;
      border-color: #00b0f0;
