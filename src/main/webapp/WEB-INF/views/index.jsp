@@ -16,31 +16,29 @@
         <form class="form-horizontal" action="#" th:action="@{/submit}" th:object="${feedback}" method="post">
             <div class="form-group">
                 <label  for="name" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Name:</label>
-                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{name}" />
-
+                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{name}" />
+            <div class="form-group">
+            </div>
                 <label for="phoneNumber" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Phone number:</label>
-                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{phoneNumber}" />
+                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{phoneNumber}" />
             </div>
             <div class="form-group">
                 <label for="email" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Email address:</label>
-                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{email}" />
-
-                <label for="product" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Product:</label>
-                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{product}" />
+                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="email" th:field="*{email}" />
             </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="product" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Please select Product...
-                </button>
-                <div class="dropdown-menu" aria-labelledby="product">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+            <div class="form-group blu-margin">
+                <label for="product" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Product:</label>
+                <select name="product" class="form-control" required="true">
+                    <option value="" th:text="${'Please select a product'}" ></option>
+                    <th:block th:each="item, iterationStatus : ${productList}" th:inline="text">
+                        <option th:value="${item}">[[${item}]]</option>
+                    </th:block>
+                </select>
+
             </div>
             <div class="form-group">
                 <label for="feedback" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Feedback:</label>
-                <textarea class="form-control col-xs-4 col-sm-3 col-md-2" type="textarea" th:field="*{feedback}" />
+                <textarea required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="textarea" th:field="*{feedback}" />
             </div>
 
             <div class="form-group">

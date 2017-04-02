@@ -50,4 +50,15 @@ public class Feedback {
     public void setProduct(String product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", feedback='" + feedback + '\'' +
+                ", product='" + product + '\'' +
+                '}';
+    }
 }
