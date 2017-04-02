@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,18 +21,17 @@ import java.util.List;
 public class FeedbackController {
 
     private final FeedbackService feedbackService;
-    private final String products;
+    private final String[] productList;
 
     @Autowired
     public FeedbackController(FeedbackService feedbackService,
                               @Value("${liverton.products}") String products) {
         this.feedbackService = feedbackService;
-        this.products = products;
+        this.productList = products.split(",");
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
-        String[] productList = products.split(",");
         Feedback feedback = new Feedback();
         model.addAttribute("productList",  Arrays.asList(productList));
         model.addAttribute("feedback", feedback);
@@ -38,7 +39,14 @@ public class FeedbackController {
     }
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
-    public String submitFeedback(@ModelAttribute(value="feedback") Feedback feedback) {
+    public String submitFeedback(@ModelAttribute(value="feedback") @Valid Feedback feedback,
+                                 BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("productList",  Arrays.asList(productList));
+            model.addAttribute("feedback", feedback);
+            return "index";
+
+        }
 //        feedbackService.submitFeedback(feedback);
 
         System.out.println(feedback);

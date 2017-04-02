@@ -1,14 +1,21 @@
 package leanne.feedback.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * Created by leanne on 31/03/17.
  */
 public class Feedback {
 
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String phoneNumber;
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String feedback;
+    @NotEmpty
     private String product;
 
     public String getName() {

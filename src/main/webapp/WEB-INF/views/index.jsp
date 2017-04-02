@@ -16,29 +16,34 @@
         <form class="form-horizontal" action="#" th:action="@{/submit}" th:object="${feedback}" method="post">
             <div class="form-group">
                 <label  for="name" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Name:</label>
-                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{name}" />
-            <div class="form-group">
+                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{name}" />
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                <div class="form-group">
             </div>
                 <label for="phoneNumber" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Phone number:</label>
-                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{phoneNumber}" />
+                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{phoneNumber}" />
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
             </div>
             <div class="form-group">
                 <label for="email" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Email address:</label>
-                <input required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="email" th:field="*{email}" />
+                <input class="form-control col-xs-4 col-sm-3 col-md-2" type="email" th:field="*{email}" />
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
             </div>
             <div class="form-group blu-margin">
                 <label for="product" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Product:</label>
-                <select name="product" class="form-control" required="true">
+                <select name="product" class="form-control" >
                     <option value="" th:text="${'Please select a product'}" ></option>
                     <th:block th:each="item, iterationStatus : ${productList}" th:inline="text">
                         <option th:value="${item}">[[${item}]]</option>
                     </th:block>
                 </select>
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></p>
 
             </div>
             <div class="form-group">
                 <label for="feedback" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Feedback:</label>
-                <textarea required="true" class="form-control col-xs-4 col-sm-3 col-md-2" type="textarea" th:field="*{feedback}" />
+                <textarea class="form-control col-xs-4 col-sm-3 col-md-2" type="textarea" th:field="*{feedback}" />
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('feedback')}" th:errors="*{feedback}"></p>
             </div>
 
             <div class="form-group">
