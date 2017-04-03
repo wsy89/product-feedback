@@ -11,9 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
- * Created by leanne on 31/03/17.
+ * ApplicationInitializer class
  */
-public class AppInitializer implements WebApplicationInitializer {
+public class ApplicationInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         WebApplicationContext context = getContext();
         servletContext.addListener(new ContextLoaderListener(context));

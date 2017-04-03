@@ -15,25 +15,25 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by leanne on 31/03/17.
+ * Feedback Controller.
  */
 @Controller
 public class FeedbackController {
 
     private final FeedbackService feedbackService;
-    private final String[] productList;
 
     @Autowired
-    public FeedbackController(FeedbackService feedbackService,
-                              @Value("${liverton.products}") String products) {
+    public FeedbackController(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
-        this.productList = products.split(",");
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
+
+        List<String> productList = feedbackService.getProductList();
+
         Feedback feedback = new Feedback();
-        model.addAttribute("productList",  Arrays.asList(productList));
+        model.addAttribute("productList", productList);
         model.addAttribute("feedback", feedback);
         return "index";
     }
@@ -42,12 +42,15 @@ public class FeedbackController {
     public String submitFeedback(@ModelAttribute(value="feedback") @Valid Feedback feedback,
                                  BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("productList",  Arrays.asList(productList));
+            //when there is mandatory data error, go back to feedback form to display errors
+            List<String> productList = feedbackService.getProductList();
+            model.addAttribute("productList",  productList);
             model.addAttribute("feedback", feedback);
             return "index";
 
         }
-//        feedbackService.submitFeedback(feedback);
+        //process feedback if data is valid
+        feedbackService.submitFeedback(feedback);
 
         System.out.println(feedback);
         return "result";

@@ -7,13 +7,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * Created by leanne on 1/04/17.
+ * Security configuration class
  */
 @EnableWebSecurity()
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //requires to login when accessing admin page
         http.authorizeRequests()
                     .antMatchers("/", "/index").permitAll()
                     .antMatchers("/admin**").access("hasRole('ADMIN')")

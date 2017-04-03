@@ -2,10 +2,18 @@ package leanne.feedback.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
+
 /**
  * Created by leanne on 31/03/17.
  */
+@Entity
+@Table(name="FEEDBACK")
 public class Feedback {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @NotEmpty
     private String name;
@@ -17,6 +25,14 @@ public class Feedback {
     private String feedback;
     @NotEmpty
     private String product;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

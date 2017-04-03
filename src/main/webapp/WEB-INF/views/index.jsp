@@ -4,16 +4,17 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{resources/css/styles.css}" />
+    <link rel="script" type="javascript" media="all" th:href="@{resources/js/feedback.js}" />
 </head>
 <body>
 
 <div class="container main-container">
     <div class='header'>
-        <img src='../../resources/images/tinylogo21.png' class='app-logo'/>
+        <img src='../../resources/images/tinylogo21.png' class='logo'/>
         <h2 class='title'>Liverton Help Form</h2>
     </div>
     <div class='p-y-2'>
-        <form class="form-horizontal" action="#" th:action="@{/submit}" th:object="${feedback}" method="post">
+        <form id="feedbackForm" class="form-horizontal" action="#" th:action="@{/submit}" th:object="${feedback}" method="post">
             <div class="form-group">
                 <label  for="name" class="col-xs-8 col-sm-7 col-md-6 col-lg-3 col-xl-4 col-form-label">Name:</label>
                 <input class="form-control col-xs-4 col-sm-3 col-md-2" type="text" th:field="*{name}" />

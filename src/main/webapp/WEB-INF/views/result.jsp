@@ -8,7 +8,10 @@
 <body>
 <div class="dim">
     <div class='p-y-2 outer container rounded'>
-        <h3 class='title flex-center'>Your feedback is submitted</h3>
+        <div class='header'>
+            <img src='../../resources/images/tinylogo21.png' class='logo'/>
+            <h2 class='title'>Your feedback is submitted</h2>
+        </div>
 
         <div class="inner container">
             <div class="alert alert-success" role="alert">Thank you for your opinion</div>
